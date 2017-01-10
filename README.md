@@ -1,6 +1,8 @@
 # profminer
 Multi currency Cryptomining manager with automatic profitability adjustment via NiceHash
 
+This miner currently is meant to *only* support GNU/Linux and Mac operating systems.
+
 ## Disclaimer
 
 This definitely isn't release quality so don't complain or file issues please. :) 
