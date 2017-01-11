@@ -2,6 +2,8 @@
 
 OS=$(uname)
 
+CFLAGS="-Ofast -march=native -mtune=native -D_REENTRANT -funroll-loops -fvariable-expansion-in-unroller -fmerge-all-constants -fbranch-target-load-optimize2 -fsched2-use-superblocks -falign-loops=16 -falign-functions=16 -falign-jumps=16 -falign-labels=16"
+
 BINARIES="make git cmake autoreconf"
 
 if [ "${OS}" = "Darwin" ]; then
@@ -13,8 +15,6 @@ else
 	export AES=$(grep aes /proc/cpuinfo | wc -l)
 	export AVX=$(grep avx /proc/cpuinfo | wc -l)
 	export AVX2=$(grep avx2 /proc/cpuinfo | wc -l)
-
-	CFLAGS="-Ofast -march=native -mtune=native"
 
 	[ ${AES} -gt 0 ] && CFLAGS="${CFLAGS} -maes"
 	[ ${AVX} -gt 0 ] && CFLAGS="${CFLAGS} -mavx"
