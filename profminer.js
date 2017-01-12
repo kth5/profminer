@@ -95,7 +95,7 @@ function updateRestartCPUMiner() {
 var rates = new Rates();
 if( rates.btc_rates_by_algo = {} ) {
 	rates.updateRates();
-	setTimeout(updateRestartCPUMiner, 60000);
+	setTimeout(updateRestartCPUMiner, 5000);
 } else {
 	updateRestartCPUMiner();
 }
