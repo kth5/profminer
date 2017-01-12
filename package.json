@@ -1,0 +1,13 @@
+{
+  "name": "Profminer",
+  "version": "0.0.3",
+  "description": "Manages cryptominers using Nicehash",
+  "main": "profminer.js",
+  "license": "GPL-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kth5/profminer.git"
+  },
+  "dependencies": {
+  }
+}
