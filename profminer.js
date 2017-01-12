@@ -5,7 +5,8 @@ const cmdLineArgs = require('command-line-args');
 const cmdArgsDefinitions = [
   { name: 'user', alias: 'u', type: String, defaultValue: '1FUJAKARZtNoYMNn7SRxyufKkE3p5AtgD5.profminer' },
   { name: 'pass', alias: 'p', type: String, defaultValue: 'z' },
-  { name: 'threads', alias: 't', type: Number, defaultValue: os.cpus().length }
+  { name: 'threads', alias: 't', type: Number, defaultValue: os.cpus().length },
+  { name: 'benchmark', alias: 'b' }
 ]
 const cmdArgs = cmdLineArgs(cmdArgsDefinitions);
 
@@ -94,7 +95,7 @@ function updateRestartCPUMiner() {
 var rates = new Rates();
 if( rates.btc_rates_by_algo = {} ) {
 	rates.updateRates();
-	setTimeout(updateRestartCPUMiner, 5000);
+	setTimeout(updateRestartCPUMiner, 60000);
 } else {
 	updateRestartCPUMiner();
 }
