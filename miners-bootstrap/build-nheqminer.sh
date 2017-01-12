@@ -3,8 +3,8 @@
 source check-env.sh
 
 if [ "${OS}" = "Darwin" ]; then
-	echo ":: OSX isn't supported."
-	exit 1
+	echo ":: Nheqminer on OSX is not supported."
+	exit 0 
 fi
 
 # fix bug with later glibc/boost combinations than nheqminer was originally
@@ -13,7 +13,7 @@ export CXXFLAGS="${CXXFLAGS} -lpthread"
 
 PW=$(pwd)
 
-git clone https://github.com/kth5/nheqminer.git
+[ ! -d nheqminer ] && git clone https://github.com/kth5/nheqminer.git
 cd ${PW}/nheqminer/cpu_xenoncat/Linux/asm && ./assemble.sh
 cd ${PW}/nheqminer/Linux_cmake/nheqminer_cpu
 cmake .

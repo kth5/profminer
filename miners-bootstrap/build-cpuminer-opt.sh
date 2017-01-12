@@ -1,8 +1,8 @@
 #!/bin/bash
-
+set -e
 source check-env.sh
 
-git clone https://github.com/kth5/cpuminer-opt.git
+[ ! -d cpuminer-opt ] && git clone https://github.com/kth5/cpuminer-opt.git
 cd cpuminer-opt
 sh autogen.sh
 if [ "${OS}" = "Darwin" ]; then

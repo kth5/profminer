@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -e
 PW=$(pwd)
 cd miners-bootstrap/
 ./build-cpuminer-opt.sh
