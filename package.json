@@ -9,5 +9,6 @@
     "url": "https://github.com/kth5/profminer.git"
   },
   "dependencies": {
+    "command-line-args": "^3.0.5"
   }
 }
