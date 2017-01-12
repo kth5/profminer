@@ -31,7 +31,7 @@ This is your NiceHash password (currently doesn't matter).
 ###### --threads/-t integer 
 Maximum number of CPU threads to be used. Currently it's the total amount
 that will always be allocated. Later on, the benchmarking (TBI) should reduce
-this limit if suboptimal for your CPU. Like for inatce on an AMD A10-7860K which has
+this limit if suboptimal for your CPU. Like for instance, on an AMD A10-7860K which has
 AVX2 but will provide the best hashrate when only one of the 4 cores is in use.	
 
 The default is set to the amount of CPUs/cores you have available **including HT**.
