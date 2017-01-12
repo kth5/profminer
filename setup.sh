@@ -6,3 +6,5 @@ cd miners-bootstrap/
 ./build-nheqminer.sh
 cd ${PW}
 wget -O .rates.json "https://www.nicehash.com/api?method=stats.global.current&location=0"
+
+npm install

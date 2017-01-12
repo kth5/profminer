@@ -1,7 +1,18 @@
 const fs = require('fs');
 const os = require('os');
+const cmdLineArgs = require('command-line-args');
 
-const NH_USER='1FUJAKARZtNoYMNn7SRxyufKkE3p5AtgD5.imc'
+const cmdArgsDefinitions = [
+  { name: 'user', alias: 'u', type: String, defaultValue: '1FUJAKARZtNoYMNn7SRxyufKkE3p5AtgD5.profminer' },
+  { name: 'pass', alias: 'p', type: String, defaultValue: 'z' },
+  { name: 'threads', alias: 't', type: Number, defaultValue: os.cpus().length }
+]
+const cmdArgs = cmdLineArgs(cmdArgsDefinitions);
+
+const NH_USER = cmdArgs.user;
+const NH_PASS = cmdArgs.pass;
+const THREADS = cmdArgs.threads;
+
 
 /*
 	Profminer
@@ -36,7 +47,7 @@ function updateRestartCPUMiner() {
 			case 'cryptonight':
 				miner = new CpuMinerOpt();
 				miner.configure('cryptonight',
-								'3',
+								THREADS,
 								'stratum+tcp://cryptonight.jp.nicehash.com:3355',
 								NH_USER,
 								'z'
@@ -45,7 +56,7 @@ function updateRestartCPUMiner() {
 			case 'hodl':
 				miner = new CpuMinerOpt();
 				miner.configure('hodl',
-								'4',
+								THREADS,
 								'stratum+tcp://hodl.jp.nicehash.com:3352',
 								NH_USER,
 								'z'
@@ -54,7 +65,7 @@ function updateRestartCPUMiner() {
 			case 'lyra2re':
 				miner = new CpuMinerOpt();
 				miner.configure('lyra2re',
-								'3',
+								THREADS,
 								'stratum+tcp://lyra2re.jp.nicehash.com:3342',
 								NH_USER,
 								'z'
@@ -63,7 +74,7 @@ function updateRestartCPUMiner() {
 			case 'equihash':
 				miner = new NheqminerCpu();
 				miner.configure('equihash',
-								'6',
+								THREADS,
 								'stratum+tcp://equihash.jp.nicehash.com:3357',
 								NH_USER,
 								'z'
