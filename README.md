@@ -21,7 +21,7 @@ This is your NiceHash username or rather BTC wallet address.
 If you'd like to be able to identify your particular worker on the NH
 stats page, attach a name to this address like so:
 
-	1FUJAKARZtNoYMNn7SRxyufKkE3p5AtgD5**.myworker**
+	1FUJAKARZtNoYMNn7SRxyufKkE3p5AtgD5.myworker
 
 The default is set to the author's (me) so be sure to set this. ;)
 
