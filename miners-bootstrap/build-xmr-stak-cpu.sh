@@ -6,6 +6,7 @@ source check-env.sh
 cd xmr-stak-cpu
 if [ "${OS}" = "Darwin" ]; then
 	git pull --no-edit https://github.com/bhayer/xmr-stak-cpu.git master
+	git checkout -- CMakeLists.txt
 	patch -Np0 -i ../xmr-stak-cpu-001-osx-openssl.patch
 	CC=gcc-6 CXX=g++-6 \
 	cmake . \
