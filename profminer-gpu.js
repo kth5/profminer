@@ -18,8 +18,7 @@ const THREADS = cmdArgs.threads;
 /*
 	Profminer
 */
-const CpuMinerOpt = require('./lib/miners/cpuminer-opt');
-const NheqminerCpu = require('./lib/miners/nheqminer');
+const ClaymoreZecAMD = require('./lib/miners/claymore-zec-amd')
 const Rates = require('./lib/rates');
 const ProfMiner = require('./lib/profminer');
 
@@ -45,38 +44,11 @@ function updateRestartCPUMiner() {
 	if( miner.algo != cur_algo) {
 		console.log('++ Reconfiguring miner...');
 		switch(cur_algo) {
-			case 'cryptonight':
-				miner = new CpuMinerOpt();
-				miner.configure('cryptonight',
-								THREADS,
-								'stratum+tcp://cryptonight.jp.nicehash.com:3355',
-								NH_USER,
-								'z'
-				);
-				break;
-			case 'hodl':
-				miner = new CpuMinerOpt();
-				miner.configure('hodl',
-								THREADS,
-								'stratum+tcp://hodl.jp.nicehash.com:3352',
-								NH_USER,
-								'z'
-				);
-				break;
-			case 'lyra2re':
-				miner = new CpuMinerOpt();
-				miner.configure('lyra2re',
-								THREADS,
-								'stratum+tcp://lyra2re.jp.nicehash.com:3342',
-								NH_USER,
-								'z'
-				);
-				break;
 			case 'equihash':
-				miner = new NheqminerCpu();
+				miner = new ClaymoreZecAMD();
 				miner.configure('equihash',
 								THREADS,
-								'stratum+tcp://equihash.jp.nicehash.com:3357',
+								'stratum+tcp://equihash.jp.nicehash.com:33357',
 								NH_USER,
 								'z'
 				);
