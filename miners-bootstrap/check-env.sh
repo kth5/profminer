@@ -19,6 +19,8 @@ else
 	[ ${AES} -gt 0 ] && CFLAGS="${CFLAGS} -maes"
 	[ ${AVX} -gt 0 ] && CFLAGS="${CFLAGS} -mavx"
 	[ ${AVX2} -gt 0 ] && CFLAGS="${CFLAGS} -mavx2"
+
+	export MAKEFLAGS="-j$(cat /proc/cpuinfo | grep 'core id' | sort | uniq | wc -l)"
 fi
 
 for binary in ${BINARIES[@]}; do
@@ -28,7 +30,13 @@ for binary in ${BINARIES[@]}; do
 	fi
 done
 
-
+# some miners profit or need a newer gcc
+if [ -d /opt/gcc ]; then
+	_mygcc=$(find /opt/gcc/6*/bin -name gcc)
+	_mygpp=$(find /opt/gcc/6*/bin -name g++)
+	[ ! -z "${_mygcc}" ] && export CC6=${_mygcc}
+	[ ! -z "${_mygpp}" ] && export CXX6=${_mygpp}
+fi
 
 if [ -z "$(pkg-config --libs libcurl 2>/dev/null)" ]; then
         echo ":: curl-dev missing..."
@@ -38,6 +46,10 @@ fi
 if [ -z "$(pkg-config --libs libcrypto 2>/dev/null)" ]; then
         echo ":: OpenSSL dev missing..."
         exit 1
+fi
+
+if [ -z "$(pkg-config --libs libmicrohttpd 2>/dev/null)" ]; then
+	echo ":: libmicrohttpd missing..."
 fi
 
 export CFLAGS

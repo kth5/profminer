@@ -17,6 +17,7 @@ PW=$(pwd)
 cd ${PW}/nheqminer/cpu_xenoncat/Linux/asm && ./assemble.sh
 cd ${PW}/nheqminer/Linux_cmake/nheqminer_cpu
 cmake .
+make clean
 make
 [ $? -eq 0 ] && cp -v nheqminer_cpu ${PW}/../miners/nheqminer_cpu
 cd ../../../

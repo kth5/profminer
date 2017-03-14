@@ -12,8 +12,15 @@ if [ "${OS}" = "Darwin" ]; then
 			--with-crypto=/usr/local/opt/openssl \
 			--disable-assembly
 else
-	CXXFLAGS="${CXXFLAGS} -std=c++11" \
+	[ ! -z "${CC6}" ] && export CC=${CC6}
+	[ ! -z "${CXX6}" ] && export CXX=${CXX6}
+
+	CFLAGS="${CFLAGS} -static-libgcc" \
+	CXXFLAGS="${CXXFLAGS} -std=c++11 -static-libstdc++" \
 		./configure --with-curl --with-crypto
+
+	# no need to link gmp
+	sed 's/-lgmp//g' -i Makefile
 fi
 make clean
 make
