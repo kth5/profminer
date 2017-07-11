@@ -9,6 +9,6 @@ cd miners-bootstrap/
 ./build-nheqminer.sh
 ./build-xmr-stak-cpu.sh
 cd ${PW}
-wget -O .rates.json "https://www.nicehash.com/api?method=stats.global.current&location=0"
+wget -O .rates.json "https://www.nicehash.com/api?method=simplemultialgo.info"
 
 npm install

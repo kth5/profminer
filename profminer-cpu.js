@@ -104,9 +104,9 @@ setInterval(updateRestartCPUMiner, 60000);
 
 setInterval(function() { if (miner.hashrate == undefined) {return;};
 						 var rates = new Rates();
-						 btcday = rates.getRate(miner.algo)*miner.hashrate / rates.algo_divisor_to_khs[miner.algo];
+						 btcday = rates.getRate(miner.algo)*(miner.hashrate/(1000*1000*1000));
 						 console.log('== Algorithm: ' + miner.algo +
-								 ', Hashrate: ' + (miner.hashrate / rates.algo_divisor_to_khs[miner.algo]).toFixed(5) + 'Kh/s' +
+								 ', Hashrate: ' + (miner.hashrate / 1000 ).toFixed(5) + 'Kh/s' +
 								 ', BTC/Day: '  + btcday.toFixed(5) +
 								 ', Accepted: ' + miner.accepted + 
 								 ', Rejected: ' + miner.rejected +
